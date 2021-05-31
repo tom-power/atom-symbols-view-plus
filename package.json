@@ -88,10 +88,10 @@
           "default": "true"
         },
         "updateProjectTagsOnFileChange": {
-          "title": "Update Project Tags On File Change",
+          "title": "Update Project Tags On File Change After Initialisation",
           "order": 6,
           "type": "boolean",
-          "default": "false"
+          "default": "true"
         },
         "provideServiceForAutocomplete": {
           "title": "Provide Service For Autocomplete",
