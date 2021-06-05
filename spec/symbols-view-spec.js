@@ -204,8 +204,8 @@ describe('SymbolsView', () => {
 
       await conditionPromise(() => symbolsView.element.querySelectorAll('li').length > 0);
       expect(symbolsView.element.querySelectorAll('li').length).toBe(2);
-      expect(symbolsView.element.querySelector('li:first-child .primary-line')).toHaveText('duplicate:1');
-      expect(symbolsView.element.querySelector('li:first-child .secondary-line')).toHaveText(taggedFile);
+      expect(symbolsView.element.querySelector('li:first-child .primary-line')).toHaveText('duplicate');
+      expect(symbolsView.element.querySelector('li:first-child .secondary-line')).toHaveText(taggedFile + ':1');
       expect(symbolsView.element).toBeVisible();
       spyOn(SymbolsView.prototype, 'moveToPosition').andCallThrough();
       symbolsView.selectListView.confirmSelection();
@@ -365,10 +365,10 @@ describe('SymbolsView', () => {
       expect(symbolsView.selectListView.refs.loadingMessage).toBeUndefined();
       expect(document.body.contains(symbolsView.element)).toBe(true);
       expect(symbolsView.element.querySelectorAll('li').length).toBe(4);
-      expect(symbolsView.element.querySelector('li:first-child .primary-line')).toHaveText('callMeMaybe:3');
-      expect(symbolsView.element.querySelector('li:first-child .secondary-line')).toHaveText(taggedFile);
-      expect(symbolsView.element.querySelector('li:last-child .primary-line')).toHaveText('thisIsCrazy:1');
-      expect(symbolsView.element.querySelector('li:last-child .secondary-line')).toHaveText(taggedFile);
+      expect(symbolsView.element.querySelector('li:first-child .primary-line')).toHaveText('callMeMaybe');
+      expect(symbolsView.element.querySelector('li:first-child .secondary-line')).toHaveText(taggedFile + ':3');
+      expect(symbolsView.element.querySelector('li:last-child .primary-line')).toHaveText('thisIsCrazy');
+      expect(symbolsView.element.querySelector('li:last-child .secondary-line')).toHaveText(taggedFile + ':1');
       atom.commands.dispatch(getWorkspaceView(), 'symbols-view-plus:toggle-project-symbols');
       fs.removeSync(directory.resolve('tags'));
 
@@ -390,8 +390,8 @@ describe('SymbolsView', () => {
         await activationPromise;
         symbolsView = atom.workspace.getModalPanels()[0].item;
         await conditionPromise(() => symbolsView.element.querySelectorAll('li').length > 0);
-        expect(symbolsView.element.querySelector('li:first-child .primary-line')).toHaveText('callMeMaybe:3');
-        expect(symbolsView.element.querySelector('li:first-child .secondary-line')).toHaveText('tagged.js');
+        expect(symbolsView.element.querySelector('li:first-child .primary-line')).toHaveText('callMeMaybe');
+        expect(symbolsView.element.querySelector('li:first-child .secondary-line')).toHaveText('tagged.js:3');
       });
     });
 
